@@ -4,68 +4,1187 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ModelFabric.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="ModelFabricStoreContainer">
-    <EntitySet Name="UserSet" EntityType="ModelFabric.Store.UserSet" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-  <EntityType Name="UserSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-</Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelFabric" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="ModelFabricContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="UserSet" EntityType="ModelFabric.User" />
-        </EntityContainer>
+      <Schema Namespace="Хранилище shveikaDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cloth">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="color id" Type="int" Nullable="false" />
+          <Property Name="picture id" Type="int" Nullable="false" />
+          <Property Name="width" Type="int" Nullable="false" />
+          <Property Name="lenght" Type="int" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clothItem">
+          <Key>
+            <PropertyRef Name="codeCloth" />
+            <PropertyRef Name="codeItem" />
+          </Key>
+          <Property Name="codeCloth" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codeItem" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="color">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="compound">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="procent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="compound-cloth">
+          <Key>
+            <PropertyRef Name="codeCloth" />
+            <PropertyRef Name="codeCompound" />
+          </Key>
+          <Property Name="codeCloth" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codeCompound" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fittings">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" Nullable="false" />
+          <Property Name="width" Type="float" Nullable="false" />
+          <Property Name="length" Type="float" Nullable="false" />
+          <Property Name="typeId" Type="int" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="weigth" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fittingsItem">
+          <Key>
+            <PropertyRef Name="codeFittings" />
+            <PropertyRef Name="codeItem" />
+          </Key>
+          <Property Name="codeFittings" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codeItem" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="placement" Type="varchar" MaxLength="50" />
+          <Property Name="width" Type="int" />
+          <Property Name="length" Type="int" />
+          <Property Name="rotation" Type="int" />
+          <Property Name="count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="width" Type="int" Nullable="false" />
+          <Property Name="length" Type="int" Nullable="false" />
+          <Property Name="comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="number" />
+          </Key>
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="customer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="statusid" Type="int" />
+          <Property Name="manager" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orderedItems">
+          <Key>
+            <PropertyRef Name="IdItem" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdItem" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roll">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="float" Nullable="false" />
+          <Property Name="IdCompound" Type="int" Nullable="false" />
+          <Property Name="idColor" Type="int" Nullable="false" />
+          <Property Name="width" Type="int" Nullable="false" />
+          <Property Name="length" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="storageFittings">
+          <Key>
+            <PropertyRef Name="batch" />
+            <PropertyRef Name="codeFittings" />
+          </Key>
+          <Property Name="batch" Type="int" Nullable="false" />
+          <Property Name="codeFittings" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="storageRoll">
+          <Key>
+            <PropertyRef Name="idRoll" />
+            <PropertyRef Name="codeCloth" />
+          </Key>
+          <Property Name="idRoll" Type="float" Nullable="false" />
+          <Property Name="codeCloth" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="login" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_cloth_color">
+          <End Role="color" Type="Self.color" Multiplicity="1" />
+          <End Role="cloth" Type="Self.cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="color">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cloth">
+              <PropertyRef Name="color id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cloth_picture">
+          <End Role="picture" Type="Self.picture" Multiplicity="1" />
+          <End Role="cloth" Type="Self.cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="picture">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cloth">
+              <PropertyRef Name="picture id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clothItem_cloth">
+          <End Role="cloth" Type="Self.cloth" Multiplicity="1" />
+          <End Role="clothItem" Type="Self.clothItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cloth">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="clothItem">
+              <PropertyRef Name="codeCloth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clothItem_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="clothItem" Type="Self.clothItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="clothItem">
+              <PropertyRef Name="codeItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compound-cloth_cloth">
+          <End Role="cloth" Type="Self.cloth" Multiplicity="1" />
+          <End Role="compound-cloth" Type="Self.compound-cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cloth">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="compound-cloth">
+              <PropertyRef Name="codeCloth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_compound-cloth_compound">
+          <End Role="compound" Type="Self.compound" Multiplicity="1" />
+          <End Role="compound-cloth" Type="Self.compound-cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compound">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="compound-cloth">
+              <PropertyRef Name="codeCompound" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fittings_type">
+          <End Role="type" Type="Self.type" Multiplicity="1" />
+          <End Role="fittings" Type="Self.fittings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="fittings">
+              <PropertyRef Name="typeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fittingsItem_fittings">
+          <End Role="fittings" Type="Self.fittings" Multiplicity="1" />
+          <End Role="fittingsItem" Type="Self.fittingsItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fittings">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="fittingsItem">
+              <PropertyRef Name="codeFittings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fittingsItem_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="fittingsItem" Type="Self.fittingsItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="fittingsItem">
+              <PropertyRef Name="codeItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="statusid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="manager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderedItems_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="orderedItems" Type="Self.orderedItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="orderedItems">
+              <PropertyRef Name="IdItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderedItems_order">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="orderedItems" Type="Self.orderedItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="number" />
+            </Principal>
+            <Dependent Role="orderedItems">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roll_color">
+          <End Role="color" Type="Self.color" Multiplicity="1" />
+          <End Role="roll" Type="Self.roll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="color">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roll">
+              <PropertyRef Name="idColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roll_compound">
+          <End Role="compound" Type="Self.compound" Multiplicity="1" />
+          <End Role="roll" Type="Self.roll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compound">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="roll">
+              <PropertyRef Name="IdCompound" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storageFittings_fittings">
+          <End Role="fittings" Type="Self.fittings" Multiplicity="1" />
+          <End Role="storageFittings" Type="Self.storageFittings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fittings">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="storageFittings">
+              <PropertyRef Name="codeFittings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storageRoll_cloth">
+          <End Role="cloth" Type="Self.cloth" Multiplicity="1" />
+          <End Role="storageRoll" Type="Self.storageRoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cloth">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="storageRoll">
+              <PropertyRef Name="codeCloth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storageRoll_roll">
+          <End Role="roll" Type="Self.roll" Multiplicity="1" />
+          <End Role="storageRoll" Type="Self.storageRoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roll">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="storageRoll">
+              <PropertyRef Name="idRoll" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище shveikaDBModelContainer">
+          <EntitySet Name="cloth" EntityType="Self.cloth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clothItem" EntityType="Self.clothItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="color" EntityType="Self.color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compound" EntityType="Self.compound" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compound-cloth" EntityType="Self.compound-cloth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fittings" EntityType="Self.fittings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fittingsItem" EntityType="Self.fittingsItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orderedItems" EntityType="Self.orderedItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="picture" EntityType="Self.picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roll" EntityType="Self.roll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storageFittings" EntityType="Self.storageFittings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storageRoll" EntityType="Self.storageRoll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cloth_color" Association="Self.FK_cloth_color">
+            <End Role="color" EntitySet="color" />
+            <End Role="cloth" EntitySet="cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cloth_picture" Association="Self.FK_cloth_picture">
+            <End Role="picture" EntitySet="picture" />
+            <End Role="cloth" EntitySet="cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clothItem_cloth" Association="Self.FK_clothItem_cloth">
+            <End Role="cloth" EntitySet="cloth" />
+            <End Role="clothItem" EntitySet="clothItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clothItem_item" Association="Self.FK_clothItem_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="clothItem" EntitySet="clothItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compound-cloth_cloth" Association="Self.FK_compound-cloth_cloth">
+            <End Role="cloth" EntitySet="cloth" />
+            <End Role="compound-cloth" EntitySet="compound-cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_compound-cloth_compound" Association="Self.FK_compound-cloth_compound">
+            <End Role="compound" EntitySet="compound" />
+            <End Role="compound-cloth" EntitySet="compound-cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fittings_type" Association="Self.FK_fittings_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="fittings" EntitySet="fittings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fittingsItem_fittings" Association="Self.FK_fittingsItem_fittings">
+            <End Role="fittings" EntitySet="fittings" />
+            <End Role="fittingsItem" EntitySet="fittingsItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fittingsItem_item" Association="Self.FK_fittingsItem_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="fittingsItem" EntitySet="fittingsItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_status" Association="Self.FK_order_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_User" Association="Self.FK_order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_User1" Association="Self.FK_order_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderedItems_item" Association="Self.FK_orderedItems_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="orderedItems" EntitySet="orderedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderedItems_order" Association="Self.FK_orderedItems_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderedItems" EntitySet="orderedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roll_color" Association="Self.FK_roll_color">
+            <End Role="color" EntitySet="color" />
+            <End Role="roll" EntitySet="roll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roll_compound" Association="Self.FK_roll_compound">
+            <End Role="compound" EntitySet="compound" />
+            <End Role="roll" EntitySet="roll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storageFittings_fittings" Association="Self.FK_storageFittings_fittings">
+            <End Role="fittings" EntitySet="fittings" />
+            <End Role="storageFittings" EntitySet="storageFittings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storageRoll_cloth" Association="Self.FK_storageRoll_cloth">
+            <End Role="cloth" EntitySet="cloth" />
+            <End Role="storageRoll" EntitySet="storageRoll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storageRoll_roll" Association="Self.FK_storageRoll_roll">
+            <End Role="roll" EntitySet="roll" />
+            <End Role="storageRoll" EntitySet="storageRoll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_role" Association="Self.FK_User_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="shveikaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cloth">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="color_id" Type="Int32" Nullable="false" />
+          <Property Name="picture_id" Type="Int32" Nullable="false" />
+          <Property Name="width" Type="Int32" Nullable="false" />
+          <Property Name="lenght" Type="Int32" Nullable="false" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="color" Relationship="Self.FK_cloth_color" FromRole="cloth" ToRole="color" />
+          <NavigationProperty Name="picture" Relationship="Self.FK_cloth_picture" FromRole="cloth" ToRole="picture" />
+          <NavigationProperty Name="storageRoll" Relationship="Self.FK_storageRoll_cloth" FromRole="cloth" ToRole="storageRoll" />
+          <NavigationProperty Name="item" Relationship="Self.clothItem" FromRole="cloth" ToRole="item" />
+          <NavigationProperty Name="compound" Relationship="Self.compound_cloth" FromRole="cloth" ToRole="compound" />
+        </EntityType>
+        <EntityType Name="color">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cloth" Relationship="Self.FK_cloth_color" FromRole="color" ToRole="cloth" />
+          <NavigationProperty Name="roll" Relationship="Self.FK_roll_color" FromRole="color" ToRole="roll" />
+        </EntityType>
+        <EntityType Name="compound">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="procent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="roll" Relationship="Self.FK_roll_compound" FromRole="compound" ToRole="roll" />
+          <NavigationProperty Name="cloth" Relationship="Self.compound_cloth" FromRole="compound" ToRole="cloth" />
+        </EntityType>
+        <EntityType Name="fittings">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="width" Type="Double" Nullable="false" />
+          <Property Name="length" Type="Double" Nullable="false" />
+          <Property Name="typeId" Type="Int32" Nullable="false" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
+          <Property Name="weigth" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="type" Relationship="Self.FK_fittings_type" FromRole="fittings" ToRole="type" />
+          <NavigationProperty Name="fittingsItem" Relationship="Self.FK_fittingsItem_fittings" FromRole="fittings" ToRole="fittingsItem" />
+          <NavigationProperty Name="storageFittings" Relationship="Self.FK_storageFittings_fittings" FromRole="fittings" ToRole="storageFittings" />
+        </EntityType>
+        <EntityType Name="fittingsItem">
+          <Key>
+            <PropertyRef Name="codeFittings" />
+            <PropertyRef Name="codeItem" />
+          </Key>
+          <Property Name="codeFittings" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codeItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="placement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="length" Type="Int32" />
+          <Property Name="rotation" Type="Int32" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="fittings" Relationship="Self.FK_fittingsItem_fittings" FromRole="fittingsItem" ToRole="fittings" />
+          <NavigationProperty Name="item" Relationship="Self.FK_fittingsItem_item" FromRole="fittingsItem" ToRole="item" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="width" Type="Int32" Nullable="false" />
+          <Property Name="length" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fittingsItem" Relationship="Self.FK_fittingsItem_item" FromRole="item" ToRole="fittingsItem" />
+          <NavigationProperty Name="orderedItems" Relationship="Self.FK_orderedItems_item" FromRole="item" ToRole="orderedItems" />
+          <NavigationProperty Name="cloth" Relationship="Self.clothItem" FromRole="item" ToRole="cloth" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="number" />
+          </Key>
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="customer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="statusid" Type="Int32" />
+          <Property Name="manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="status1" Relationship="Self.FK_order_status" FromRole="order" ToRole="status" />
+          <NavigationProperty Name="User" Relationship="Self.FK_order_User" FromRole="order" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_order_User1" FromRole="order" ToRole="User" />
+          <NavigationProperty Name="orderedItems" Relationship="Self.FK_orderedItems_order" FromRole="order" ToRole="orderedItems" />
+        </EntityType>
+        <EntityType Name="orderedItems">
+          <Key>
+            <PropertyRef Name="IdItem" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="item" Relationship="Self.FK_orderedItems_item" FromRole="orderedItems" ToRole="item" />
+          <NavigationProperty Name="order" Relationship="Self.FK_orderedItems_order" FromRole="orderedItems" ToRole="order" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cloth" Relationship="Self.FK_cloth_picture" FromRole="picture" ToRole="cloth" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_role" FromRole="role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="roll">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Double" Nullable="false" />
+          <Property Name="IdCompound" Type="Int32" Nullable="false" />
+          <Property Name="idColor" Type="Int32" Nullable="false" />
+          <Property Name="width" Type="Int32" Nullable="false" />
+          <Property Name="length" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="color" Relationship="Self.FK_roll_color" FromRole="roll" ToRole="color" />
+          <NavigationProperty Name="compound" Relationship="Self.FK_roll_compound" FromRole="roll" ToRole="compound" />
+          <NavigationProperty Name="storageRoll" Relationship="Self.FK_storageRoll_roll" FromRole="roll" ToRole="storageRoll" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_status" FromRole="status" ToRole="order" />
+        </EntityType>
+        <EntityType Name="storageFittings">
+          <Key>
+            <PropertyRef Name="batch" />
+            <PropertyRef Name="codeFittings" />
+          </Key>
+          <Property Name="batch" Type="Int32" Nullable="false" />
+          <Property Name="codeFittings" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="fittings" Relationship="Self.FK_storageFittings_fittings" FromRole="storageFittings" ToRole="fittings" />
+        </EntityType>
+        <EntityType Name="storageRoll">
+          <Key>
+            <PropertyRef Name="idRoll" />
+            <PropertyRef Name="codeCloth" />
+          </Key>
+          <Property Name="idRoll" Type="Double" Nullable="false" />
+          <Property Name="codeCloth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cloth" Relationship="Self.FK_storageRoll_cloth" FromRole="storageRoll" ToRole="cloth" />
+          <NavigationProperty Name="roll" Relationship="Self.FK_storageRoll_roll" FromRole="storageRoll" ToRole="roll" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="fittings" Relationship="Self.FK_fittings_type" FromRole="type" ToRole="fittings" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_User" FromRole="User" ToRole="order" />
+          <NavigationProperty Name="order1" Relationship="Self.FK_order_User1" FromRole="User" ToRole="order" />
+          <NavigationProperty Name="role1" Relationship="Self.FK_User_role" FromRole="User" ToRole="role" />
+        </EntityType>
+        <Association Name="FK_cloth_color">
+          <End Role="color" Type="Self.color" Multiplicity="1" />
+          <End Role="cloth" Type="Self.cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="color">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cloth">
+              <PropertyRef Name="color_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cloth_picture">
+          <End Role="picture" Type="Self.picture" Multiplicity="1" />
+          <End Role="cloth" Type="Self.cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="picture">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cloth">
+              <PropertyRef Name="picture_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storageRoll_cloth">
+          <End Role="cloth" Type="Self.cloth" Multiplicity="1" />
+          <End Role="storageRoll" Type="Self.storageRoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cloth">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="storageRoll">
+              <PropertyRef Name="codeCloth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roll_color">
+          <End Role="color" Type="Self.color" Multiplicity="1" />
+          <End Role="roll" Type="Self.roll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="color">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="roll">
+              <PropertyRef Name="idColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roll_compound">
+          <End Role="compound" Type="Self.compound" Multiplicity="1" />
+          <End Role="roll" Type="Self.roll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compound">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="roll">
+              <PropertyRef Name="IdCompound" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fittings_type">
+          <End Role="type" Type="Self.type" Multiplicity="1" />
+          <End Role="fittings" Type="Self.fittings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="fittings">
+              <PropertyRef Name="typeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fittingsItem_fittings">
+          <End Role="fittings" Type="Self.fittings" Multiplicity="1" />
+          <End Role="fittingsItem" Type="Self.fittingsItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fittings">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="fittingsItem">
+              <PropertyRef Name="codeFittings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storageFittings_fittings">
+          <End Role="fittings" Type="Self.fittings" Multiplicity="1" />
+          <End Role="storageFittings" Type="Self.storageFittings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fittings">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="storageFittings">
+              <PropertyRef Name="codeFittings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fittingsItem_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="fittingsItem" Type="Self.fittingsItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="fittingsItem">
+              <PropertyRef Name="codeItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderedItems_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="orderedItems" Type="Self.orderedItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="orderedItems">
+              <PropertyRef Name="IdItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="statusid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="manager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderedItems_order">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="orderedItems" Type="Self.orderedItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="number" />
+            </Principal>
+            <Dependent Role="orderedItems">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storageRoll_roll">
+          <End Role="roll" Type="Self.roll" Multiplicity="1" />
+          <End Role="storageRoll" Type="Self.storageRoll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roll">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="storageRoll">
+              <PropertyRef Name="idRoll" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clothItem">
+          <End Role="cloth" Type="Self.cloth" Multiplicity="*" />
+          <End Role="item" Type="Self.item" Multiplicity="*" />
+        </Association>
+        <Association Name="compound_cloth">
+          <End Role="cloth" Type="Self.cloth" Multiplicity="*" />
+          <End Role="compound" Type="Self.compound" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="shveikaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cloth" EntityType="Self.cloth" />
+          <EntitySet Name="color" EntityType="Self.color" />
+          <EntitySet Name="compound" EntityType="Self.compound" />
+          <EntitySet Name="fittings" EntityType="Self.fittings" />
+          <EntitySet Name="fittingsItem" EntityType="Self.fittingsItem" />
+          <EntitySet Name="item" EntityType="Self.item" />
+          <EntitySet Name="order" EntityType="Self.order" />
+          <EntitySet Name="orderedItems" EntityType="Self.orderedItems" />
+          <EntitySet Name="picture" EntityType="Self.picture" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="roll" EntityType="Self.roll" />
+          <EntitySet Name="status" EntityType="Self.status" />
+          <EntitySet Name="storageFittings" EntityType="Self.storageFittings" />
+          <EntitySet Name="storageRoll" EntityType="Self.storageRoll" />
+          <EntitySet Name="type" EntityType="Self.type" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_cloth_color" Association="Self.FK_cloth_color">
+            <End Role="color" EntitySet="color" />
+            <End Role="cloth" EntitySet="cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cloth_picture" Association="Self.FK_cloth_picture">
+            <End Role="picture" EntitySet="picture" />
+            <End Role="cloth" EntitySet="cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storageRoll_cloth" Association="Self.FK_storageRoll_cloth">
+            <End Role="cloth" EntitySet="cloth" />
+            <End Role="storageRoll" EntitySet="storageRoll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roll_color" Association="Self.FK_roll_color">
+            <End Role="color" EntitySet="color" />
+            <End Role="roll" EntitySet="roll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roll_compound" Association="Self.FK_roll_compound">
+            <End Role="compound" EntitySet="compound" />
+            <End Role="roll" EntitySet="roll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fittings_type" Association="Self.FK_fittings_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="fittings" EntitySet="fittings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fittingsItem_fittings" Association="Self.FK_fittingsItem_fittings">
+            <End Role="fittings" EntitySet="fittings" />
+            <End Role="fittingsItem" EntitySet="fittingsItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storageFittings_fittings" Association="Self.FK_storageFittings_fittings">
+            <End Role="fittings" EntitySet="fittings" />
+            <End Role="storageFittings" EntitySet="storageFittings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fittingsItem_item" Association="Self.FK_fittingsItem_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="fittingsItem" EntitySet="fittingsItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderedItems_item" Association="Self.FK_orderedItems_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="orderedItems" EntitySet="orderedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_status" Association="Self.FK_order_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_User" Association="Self.FK_order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_User1" Association="Self.FK_order_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderedItems_order" Association="Self.FK_orderedItems_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderedItems" EntitySet="orderedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_role" Association="Self.FK_User_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storageRoll_roll" Association="Self.FK_storageRoll_roll">
+            <End Role="roll" EntitySet="roll" />
+            <End Role="storageRoll" EntitySet="storageRoll" />
+          </AssociationSet>
+          <AssociationSet Name="clothItem" Association="Self.clothItem">
+            <End Role="cloth" EntitySet="cloth" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
+          <AssociationSet Name="compound_cloth" Association="Self.compound_cloth">
+            <End Role="cloth" EntitySet="cloth" />
+            <End Role="compound" EntitySet="compound" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelFabricStoreContainer" CdmEntityContainer="ModelFabricContainer">
-    <EntitySetMapping Name="UserSet">
-      <EntityTypeMapping TypeName="IsTypeOf(ModelFabric.User)">
-        <MappingFragment StoreEntitySet="UserSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище shveikaDBModelContainer" CdmEntityContainer="shveikaDBEntities">
+          <EntitySetMapping Name="cloth">
+            <EntityTypeMapping TypeName="shveikaDBModel.cloth">
+              <MappingFragment StoreEntitySet="cloth">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="color_id" ColumnName="color id" />
+                <ScalarProperty Name="picture_id" ColumnName="picture id" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="lenght" ColumnName="lenght" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="color">
+            <EntityTypeMapping TypeName="shveikaDBModel.color">
+              <MappingFragment StoreEntitySet="color">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compound">
+            <EntityTypeMapping TypeName="shveikaDBModel.compound">
+              <MappingFragment StoreEntitySet="compound">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="procent" ColumnName="procent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fittings">
+            <EntityTypeMapping TypeName="shveikaDBModel.fittings">
+              <MappingFragment StoreEntitySet="fittings">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="typeId" ColumnName="typeId" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="weigth" ColumnName="weigth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fittingsItem">
+            <EntityTypeMapping TypeName="shveikaDBModel.fittingsItem">
+              <MappingFragment StoreEntitySet="fittingsItem">
+                <ScalarProperty Name="codeFittings" ColumnName="codeFittings" />
+                <ScalarProperty Name="codeItem" ColumnName="codeItem" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="rotation" ColumnName="rotation" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item">
+            <EntityTypeMapping TypeName="shveikaDBModel.item">
+              <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="shveikaDBModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="statusid" ColumnName="statusid" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderedItems">
+            <EntityTypeMapping TypeName="shveikaDBModel.orderedItems">
+              <MappingFragment StoreEntitySet="orderedItems">
+                <ScalarProperty Name="IdItem" ColumnName="IdItem" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="picture">
+            <EntityTypeMapping TypeName="shveikaDBModel.picture">
+              <MappingFragment StoreEntitySet="picture">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="shveikaDBModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roll">
+            <EntityTypeMapping TypeName="shveikaDBModel.roll">
+              <MappingFragment StoreEntitySet="roll">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IdCompound" ColumnName="IdCompound" />
+                <ScalarProperty Name="idColor" ColumnName="idColor" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="shveikaDBModel.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storageFittings">
+            <EntityTypeMapping TypeName="shveikaDBModel.storageFittings">
+              <MappingFragment StoreEntitySet="storageFittings">
+                <ScalarProperty Name="batch" ColumnName="batch" />
+                <ScalarProperty Name="codeFittings" ColumnName="codeFittings" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storageRoll">
+            <EntityTypeMapping TypeName="shveikaDBModel.storageRoll">
+              <MappingFragment StoreEntitySet="storageRoll">
+                <ScalarProperty Name="idRoll" ColumnName="idRoll" />
+                <ScalarProperty Name="codeCloth" ColumnName="codeCloth" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type">
+            <EntityTypeMapping TypeName="shveikaDBModel.type">
+              <MappingFragment StoreEntitySet="type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="shveikaDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="clothItem" TypeName="shveikaDBModel.clothItem" StoreEntitySet="clothItem">
+            <EndProperty Name="cloth">
+              <ScalarProperty Name="code" ColumnName="codeCloth" />
+            </EndProperty>
+            <EndProperty Name="item">
+              <ScalarProperty Name="code" ColumnName="codeItem" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="compound_cloth" TypeName="shveikaDBModel.compound_cloth" StoreEntitySet="compound-cloth">
+            <EndProperty Name="cloth">
+              <ScalarProperty Name="code" ColumnName="codeCloth" />
+            </EndProperty>
+            <EndProperty Name="compound">
+              <ScalarProperty Name="code" ColumnName="codeCompound" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <edmx:Connection>
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
-    </edmx:Connection>
-    <edmx:Options>
+    </Connection>
+    <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
-    </edmx:Options>
+    </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <edmx:Diagrams>
-    </edmx:Diagrams>
-  </edmx:Designer>
+    <Diagrams></Diagrams>
+  </Designer>
 </edmx:Edmx>

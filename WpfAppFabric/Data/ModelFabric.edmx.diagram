@@ -4,8 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="71432347a80740b5bc40420ef3d8c6f4" Name="Diagram1" >
-        <EntityTypeShape EntityType="ModelFabric.User" Width="1.5" PointX="6.625" PointY="1.875" />
+      <Diagram DiagramId="93a1e8d4609b4407aaa999e1c6e33a97" Name="Diagram1" ZoomLevel="132">
+        <EntityTypeShape EntityType="shveikaDBModel.cloth" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.color" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.compound" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.fittings" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.fittingsItem" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.item" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.order" Width="1.5" PointX="8.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.orderedItems" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.picture" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.role" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.roll" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.status" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.storageFittings" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.storageRoll" Width="1.5" PointX="9.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.type" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shveikaDBModel.User" Width="1.5" PointX="6" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="shveikaDBModel.FK_cloth_color" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_cloth_picture" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_storageRoll_cloth" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_roll_color" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_roll_compound" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_fittings_type" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_fittingsItem_fittings" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_storageFittings_fittings" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_fittingsItem_item" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_orderedItems_item" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_order_status" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_order_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_orderedItems_order" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_User_role" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.FK_storageRoll_roll" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.clothItem" ManuallyRouted="false" />
+        <AssociationConnector Association="shveikaDBModel.compound_cloth" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

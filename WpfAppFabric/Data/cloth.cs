@@ -12,23 +12,31 @@ namespace WpfAppFabric.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class cloth
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public cloth()
         {
-            this.order = new HashSet<order>();
-            this.order1 = new HashSet<order>();
+            this.storageRoll = new HashSet<storageRoll>();
+            this.item = new HashSet<item>();
+            this.compound = new HashSet<compound>();
         }
     
-        public string login { get; set; }
-        public string password { get; set; }
-        public int role { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
+        public int color_id { get; set; }
+        public int picture_id { get; set; }
+        public int width { get; set; }
+        public int lenght { get; set; }
+        public int cost { get; set; }
     
+        public virtual color color { get; set; }
+        public virtual picture picture { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order { get; set; }
+        public virtual ICollection<storageRoll> storageRoll { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order1 { get; set; }
-        public virtual role role1 { get; set; }
+        public virtual ICollection<item> item { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<compound> compound { get; set; }
     }
 }

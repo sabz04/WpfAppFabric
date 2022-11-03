@@ -12,23 +12,25 @@ namespace WpfAppFabric.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public order()
         {
-            this.order = new HashSet<order>();
-            this.order1 = new HashSet<order>();
+            this.orderedItems = new HashSet<orderedItems>();
         }
     
-        public string login { get; set; }
-        public string password { get; set; }
-        public int role { get; set; }
+        public int number { get; set; }
+        public System.DateTime date { get; set; }
+        public string status { get; set; }
+        public string customer { get; set; }
+        public Nullable<int> statusid { get; set; }
+        public string manager { get; set; }
     
+        public virtual status status1 { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order1 { get; set; }
-        public virtual role role1 { get; set; }
+        public virtual ICollection<orderedItems> orderedItems { get; set; }
     }
 }

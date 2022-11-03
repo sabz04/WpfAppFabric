@@ -1,13 +1,19 @@
 ﻿<Window x:Class="WpfAppFabric.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppFabric"
         mc:Ignorable="d"
-        Icon="Images/logo-01.jpg"
+        Icon="/Images/logo-01.jpg"
         
-        Title="Швейная фабрика" Height="500" Width="500">
+        Title="Швейная фабрика" 
+        
+        MinHeight="400"
+        MinWidth="250"
+        
+        Height="500" Width="500">
    
     
     <Grid>
@@ -23,8 +29,8 @@
         <Image
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"
-                Margin="5"
-                Source="Images/logo-01.jpg"
+                Margin="0,0,0,20"
+                Source="/Images/logo-01.jpg"
                 Height="100"
                 Width="200"
                 ></Image>
@@ -35,33 +41,12 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             >
-           
-            <TextBlock
-                
-                Style="{StaticResource TextBlock_Style}"
-                >Логин</TextBlock>
-            <TextBox
-               Style="{StaticResource TextBox_Style}"
-                x:Name="LoginTB"
-                >
-                
-            </TextBox>
-            <TextBlock
-                Style="{StaticResource TextBlock_Style}"
-                >Пароль</TextBlock>
-            <TextBox
-                Style="{StaticResource TextBox_Style}"
-                x:Name="PasswordTB"
-                >
-                
-            </TextBox>
-            <Button
-                Style="{StaticResource Button_Style}"
-                Click="RegisterBTN_Click"
-                Height="35"
-                x:Name="RegisterBTN"
-                Content="Регистрация"
-                ></Button>
+            <Frame  
+                NavigationUIVisibility="Hidden"
+                x:Name="SystemAuthFrame"
+                ></Frame>
         </StackPanel>
+            
+        
     </Grid>
 </Window>

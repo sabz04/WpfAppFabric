@@ -1,0 +1,38 @@
+﻿<Page x:Class="WpfAppFabric.Pages.AppPages.CustomerOrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppFabric.Pages.AppPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomerOrdersPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <DataGrid HorizontalAlignment="Center" 
+                    SelectedCellsChanged="DgOrders_SelectedCellsChanged"
+                    FontSize="14"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    x:Name="DgOrders" Width="250">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код" Binding="{Binding Path=number}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=date}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=status}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Менеджер" Binding="{Binding Path=manager}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            Grid.Row="1"
+            Width="200"
+            Content="Новый заказ"
+            x:Name="BtnCreateOrder"
+            Click="BtnCreateOrder_Click"
+            Style="{StaticResource Button_Style}"></Button>
+    </Grid>
+</Page>

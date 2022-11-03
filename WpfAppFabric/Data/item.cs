@@ -12,23 +12,27 @@ namespace WpfAppFabric.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class item
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public item()
         {
-            this.order = new HashSet<order>();
-            this.order1 = new HashSet<order>();
+            this.fittingsItem = new HashSet<fittingsItem>();
+            this.orderedItems = new HashSet<orderedItems>();
+            this.cloth = new HashSet<cloth>();
         }
     
-        public string login { get; set; }
-        public string password { get; set; }
-        public int role { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
+        public int width { get; set; }
+        public int length { get; set; }
+        public string comment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order { get; set; }
+        public virtual ICollection<fittingsItem> fittingsItem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order1 { get; set; }
-        public virtual role role1 { get; set; }
+        public virtual ICollection<orderedItems> orderedItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cloth> cloth { get; set; }
     }
 }

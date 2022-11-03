@@ -12,23 +12,23 @@ namespace WpfAppFabric.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class roll
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public roll()
         {
-            this.order = new HashSet<order>();
-            this.order1 = new HashSet<order>();
+            this.storageRoll = new HashSet<storageRoll>();
         }
     
-        public string login { get; set; }
-        public string password { get; set; }
-        public int role { get; set; }
+        public double id { get; set; }
+        public int IdCompound { get; set; }
+        public int idColor { get; set; }
+        public int width { get; set; }
+        public int length { get; set; }
     
+        public virtual color color { get; set; }
+        public virtual compound compound { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> order1 { get; set; }
-        public virtual role role1 { get; set; }
+        public virtual ICollection<storageRoll> storageRoll { get; set; }
     }
 }

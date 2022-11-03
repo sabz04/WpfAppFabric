@@ -1,0 +1,62 @@
+﻿<Page x:Class="WpfAppFabric.Pages.AppPages.StoreKeeperPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppFabric.Pages.AppPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="StoreKeeperPage">
+
+
+    <DockPanel x:Name="MainDP"
+        Margin="10"
+        >
+        
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Padding="4" x:Name="ClothesBtn" Style="{StaticResource Button_Style}"  Margin="2" Click="ClothesBtn_Click" >Список тканей</Button>
+            <Button Padding="4" x:Name="FittingsBtn" Style="{StaticResource Button_Style}"  Margin="2" Click="FittingsBtn_Click" >Список фурнитуры</Button>
+        </StackPanel>
+        <ScrollViewer HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" x:Name="PlaceHoldeSV"></ScrollViewer>
+        <ScrollViewer   x:Name="FittingsSV" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+            <DataGrid HorizontalAlignment="Center" 
+                FontSize="14"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                x:Name="FurnituresGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Код" Binding="{Binding Path=code}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Path=name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Вес" Binding="{Binding Path=weight}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding Path=type.name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ширина" Binding="{Binding Path=width}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Длина" Binding="{Binding Path=length}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Стоимость" Binding="{Binding Path=cost}"></DataGridTextColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        <ScrollViewer Visibility="Hidden" x:Name="ClotheSV" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+            <DataGrid HorizontalAlignment="Center" 
+                FontSize="14"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                x:Name="ClothesGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Код" Binding="{Binding Path=code}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Path=name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Цвет" Binding="{Binding Path=color.name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Рисунок" Binding="{Binding Path=picture.name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ширина" Binding="{Binding Path=width}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Длина" Binding="{Binding Path=lenght}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Стоимость" Binding="{Binding Path=cost}"></DataGridTextColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        <!--<WrapPanel x:Name="ListWP" Height="500" Width="500" Orientation="Horizontal">
+            
+        </WrapPanel>-->
+    </DockPanel>
+    
+</Page>

@@ -13,10 +13,10 @@ namespace WpfAppFabric.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ModelFabricContainer : DbContext
+    public partial class shveikaDBEntities : DbContext
     {
-        public ModelFabricContainer()
-            : base("name=ModelFabricContainer")
+        public shveikaDBEntities()
+            : base("name=shveikaDBEntities")
         {
         }
     
@@ -25,6 +25,21 @@ namespace WpfAppFabric.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> UserSet { get; set; }
+        public virtual DbSet<cloth> cloth { get; set; }
+        public virtual DbSet<color> color { get; set; }
+        public virtual DbSet<compound> compound { get; set; }
+        public virtual DbSet<fittings> fittings { get; set; }
+        public virtual DbSet<fittingsItem> fittingsItem { get; set; }
+        public virtual DbSet<item> item { get; set; }
+        public virtual DbSet<order> order { get; set; }
+        public virtual DbSet<orderedItems> orderedItems { get; set; }
+        public virtual DbSet<picture> picture { get; set; }
+        public virtual DbSet<role> role { get; set; }
+        public virtual DbSet<roll> roll { get; set; }
+        public virtual DbSet<status> status { get; set; }
+        public virtual DbSet<storageFittings> storageFittings { get; set; }
+        public virtual DbSet<storageRoll> storageRoll { get; set; }
+        public virtual DbSet<type> type { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

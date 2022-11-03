@@ -64,7 +64,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Pages\AppPages\CustomerOrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AppPages\CustomerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AppPages\ManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AppPages\NavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AppPages\StoreKeeperPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AppPages\SuperVisorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AuthPages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AuthPages\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -72,31 +100,104 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\ModelFabric.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFabric.Context.tt</DependentUpon>
+    <Compile Include="Data\cloth.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ModelFabric.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFabric.tt</DependentUpon>
+    <Compile Include="Data\color.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ModelFabric.Designer.cs">
+    <Compile Include="Data\compound.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fittings.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fittingsItem.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\item.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ModelFAbric.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFabric.edmx</DependentUpon>
+      <DependentUpon>ModelFAbric.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ModelFAbric.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ModelFAbric.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFAbric.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\order.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\orderedItems.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\picture.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\role.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\roll.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\status.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\storageFittings.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\storageRoll.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\type.cs">
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\User.cs">
-      <DependentUpon>ModelFabric.tt</DependentUpon>
+      <DependentUpon>ModelFAbric.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Pages\AppPages\CustomerOrdersPage.xaml.cs">
+      <DependentUpon>CustomerOrdersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AppPages\CustomerPage.xaml.cs">
+      <DependentUpon>CustomerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AppPages\ManagerPage.xaml.cs">
+      <DependentUpon>ManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AppPages\NavigationPage.xaml.cs">
+      <DependentUpon>NavigationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AppPages\StoreKeeperPage.xaml.cs">
+      <DependentUpon>StoreKeeperPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AppPages\SuperVisorPage.xaml.cs">
+      <DependentUpon>SuperVisorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AuthPages\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AuthPages\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AuthPages\RegPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\MainClass.cs" />
+    <Compile Include="Pages\AuthPages\RegPage.xaml.cs">
+      <DependentUpon>RegPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,12 +215,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\ModelFabric.edmx">
+    <EntityDeploy Include="Data\ModelFAbric.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelFabric.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelFAbric.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\ModelFabric.edmx.diagram">
-      <DependentUpon>ModelFabric.edmx</DependentUpon>
+    <None Include="Data\ModelFAbric.edmx.diagram">
+      <DependentUpon>ModelFAbric.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -134,20 +235,20 @@
     <Resource Include="Images\logo-01.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\ModelFabric.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelFabric.Context.cs</LastGenOutput>
-      <DependentUpon>ModelFabric.edmx</DependentUpon>
-    </Content>
-    <Content Include="Data\ModelFabric.edmx.sql" />
-    <Content Include="Data\ModelFabric.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelFabric.cs</LastGenOutput>
-      <DependentUpon>ModelFabric.edmx</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\ModelFAbric.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFAbric.edmx</DependentUpon>
+      <LastGenOutput>ModelFAbric.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ModelFAbric.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFAbric.edmx</DependentUpon>
+      <LastGenOutput>ModelFAbric.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
